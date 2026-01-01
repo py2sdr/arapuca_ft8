@@ -1,4 +1,4 @@
-# Arapuca_FT8 - FT8 Reverse Beacon
+# RXFT8 - FT8 Reverse Beacon
 
 A lightweight FT8 digital mode receiver and decoder for Raspberry Pi, designed for unattended FT8 monitoring.
 
@@ -175,7 +175,8 @@ QRG=50313000    # RX Frequency
 SR=2400000      # Sample Rate
 SHIFT=$(printf "%.6f" $(echo "scale=6; ($LO-$QRG) / $SR" | bc)) # Frequency Shift
 
-rtl_sdr -s $SR -f $LO -g 49 - | \
+# SDR processing chain
+rtl_sdr -s $SR -f $LO -g 25 - | \
 csdr convert_u8_f | \
 csdr shift_addition_cc $SHIFT | \
 csdr fir_decimate_cc 50 0.005 HAMMING | \
@@ -184,8 +185,10 @@ csdr realpart_cf | \
 csdr convert_f_s16 | \
 msend -a $MCAST_GROUP -p $MCAST_PORT -i dummy0 &
 
+# Audio recording and FT8 processing
 rxft8 -c py2sdr -l gg56tv -f 50313000 -g $MCAST_GROUP -p $MCAST_PORT -i dummy0 &
 
+# Remote audio monitoring
 mrecv -a $MCAST_GROUP -p $MCAST_PORT -i dummy0 | nmux -a 0.0.0.0 -p 30000 &
 
 wait
