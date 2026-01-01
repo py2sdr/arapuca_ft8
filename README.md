@@ -204,7 +204,7 @@ wait
 
 1. **rtl_sdr**: Captures IQ samples from RTL-SDR at 2.4 MHz sample rate
 2. **csdr convert_u8_f**: Converts unsigned 8-bit samples to float
-3. **csdr shift_addition_cc**: Shifts frequency to center on target
+3. **csdr shift_addition_cc**: Shifts frequency of interest to baseband
 4. **csdr fir_decimate_cc**: Decimates by 50x (2.4 MHz → 48 kHz)
 5. **csdr bandpass_fir_fft_cc**: Applies a 3.2 kHz bandpass filter (USB demodulation)
 6. **csdr realpart_cf**: Extracts real part (complex to real)
