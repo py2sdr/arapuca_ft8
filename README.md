@@ -1,4 +1,4 @@
-# RXFT8 - FT8 Reverse Beacon
+# Arapuca_FT8 - FT8 Reverse Beacon
 
 A lightweight FT8 digital mode receiver and decoder for Raspberry Pi, designed for unattended FT8 monitoring.
 
@@ -142,8 +142,10 @@ The following start script demonstrates a complete FT8 receiver chain using an R
 
 ```bash
 #!/bin/bash
-# RTL-SDR
+# 6m RTL-SDR FT8 Reverse Beacon
+# Author: Edson Pereira, PY2SDR
 
+# Run as pi user if started by root
 if [ $UID -eq 0 ]; then
   user=pi
   dir=/home/pi
@@ -151,12 +153,13 @@ if [ $UID -eq 0 ]; then
   exec su "$user" "$0" -- "$@"
 fi
 
+# Run in RUNFS
 cd /run/user/$UID
 mkdir -p sdr6m
 cd sdr6m
 PATH=$PATH:/usr/bin:/usr/local/bin
 
-# Cleanup function
+# Cleanup function at exit
 cleanup() {
     trap - EXIT INT TERM  # Remove the trap to prevent recursion
     echo "Stopping..."
@@ -170,6 +173,7 @@ trap cleanup EXIT INT TERM
 MCAST_GROUP=239.0.0.11
 MCAST_PORT=50001
 
+# SDR configuration
 LO=50200000     # Center Frequency
 QRG=50313000    # RX Frequency
 SR=2400000      # Sample Rate
