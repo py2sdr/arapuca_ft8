@@ -1,4 +1,4 @@
-# RXFT8 - FT8 Reverse Beacon
+# Arapuca_FT8 - FT8 Reverse Beacon
 
 A lightweight FT8 digital mode receiver and decoder for Raspberry Pi, designed for unattended FT8 monitoring.
 
@@ -199,7 +199,7 @@ wait
 2. **csdr convert_u8_f**: Converts unsigned 8-bit samples to float
 3. **csdr shift_addition_cc**: Shifts frequency to center on target
 4. **csdr fir_decimate_cc**: Decimates by 50x (2.4 MHz → 48 kHz)
-5. **csdr bandpass_fir_fft_cc**: Applies a 3.2 kHz bandpass filter
+5. **csdr bandpass_fir_fft_cc**: Applies a 3.2 kHz bandpass filter (USB demodulation)
 6. **csdr realpart_cf**: Extracts real part (complex to real)
 7. **csdr convert_f_s16**: Converts to 16-bit signed integers
 8. **msend**: Sends audio via UDP multicast
