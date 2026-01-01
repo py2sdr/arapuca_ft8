@@ -1,5 +1,5 @@
 #!/bin/bash
-# RTL-SDR FT8 Reverse Beacon
+# 6m RTL-SDR FT8 Reverse Beacon
 # Author: Edson Pereira, PY2SDR
 
 # Run as ii user is started by root
