@@ -31,9 +31,9 @@ MCAST_PORT=50001
 
 # SDR configuration
 LO=50200000     # Center Frequency
-QRG=50313000    # RX Frequency
+RX=50313000     # RX Frequency
 SR=2400000      # Sample Rate
-SHIFT=$(printf "%.6f" $(echo "scale=6; ($LO-$QRG) / $SR" | bc)) # Frequency Shift
+SHIFT=$(printf "%.6f" $(echo "scale=6; ($LO-$RX) / $SR" | bc)) # Frequency Shift
 
 # SDR processing chain
 rtl_sdr -s $SR -f $LO -g 25 - | \
