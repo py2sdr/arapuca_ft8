@@ -10,7 +10,7 @@ if [ $UID -eq 0 ]; then
   exec su "$user" "$0" -- "$@"
 fi
 
-# Run in RAMDISK
+# Run in RAMFS
 cd /run/user/$UID
 mkdir -p sdr6m
 cd sdr6m
