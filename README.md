@@ -1,4 +1,4 @@
-# RXFT8 - FT8 Reverse Beacon
+# Arapuca_FT8 - FT8 Reverse Beacon
 
 A lightweight FT8 digital mode receiver and decoder for Raspberry Pi, designed for unattended FT8 monitoring.
 
